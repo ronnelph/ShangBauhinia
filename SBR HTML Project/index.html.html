@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shang Bauhinia Residences - Cebu's First Internationally Award-Winning Luxury Residence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #2d3748 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Navigation Sidebar */
+        .sidebar {
+            width: 300px;
+            background: linear-gradient(180deg, #1a202c 0%, #2d3748 100%);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid #d4af37;
+            padding: 2rem 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .logo {
+            text-align: center;
+            padding: 0 1.5rem 2rem;
+            border-bottom: 1px solid #4a5568;
+            margin-bottom: 2rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: #d4af37;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .logo .subtitle {
+            font-size: 0.85rem;
+            color: #a0aec0;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-item {
+            border-bottom: 1px solid #4a5568;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 1.2rem 1.5rem;
+            color: #e2e8f0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: linear-gradient(90deg, #d4af37 0%, #f6e05e 100%);
+            color: #1a202c;
+            border-left: 4px solid #d4af37;
+            transform: translateX(5px);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 300px;
+            padding: 2rem;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(246, 224, 94, 0.05) 100%);
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #cbd5e0;
+            font-style: italic;
+        }
+
+        /* Award Badge */
+        .award-badge {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(45deg, #d4af37, #f6e05e);
+            color: #1a202c;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Content Cards */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .content-card {
+            background: linear-gradient(135deg, rgba(45, 55, 72, 0.8) 0%, rgba(26, 32, 44, 0.9) 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .card-content {
+            color: #cbd5e0;
+            line-height: 1.6;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #d4af37 0%, #f6e05e 100%);
+            color: #1a202c;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Image Placeholder */
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a0aec0;
+            font-style: italic;
+            margin: 1.5rem 0;
+            border: 2px dashed #d4af37;
+        }
+
+        /* Unit Portfolio Table */
+        .unit-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: rgba(26, 32, 44, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .unit-table th, .unit-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #4a5568;
+        }
+
+        .unit-table th {
+            background: linear-gradient(90deg, #d4af37 0%, #f6e05e 100%);
+            color: #1a202c;
+            font-weight: bold;
+        }
+
+        .unit-table td {
+            color: #cbd5e0;
+        }
+
+        /* Contact Section */
+        .contact-card {
+            background: linear-gradient(135deg, #d4af37 0%, #f6e05e 100%);
+            color: #1a202c;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .contact-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Luxury Accent Elements */
+        .luxury-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #d4af37 50%, transparent 100%);
+            margin: 3rem 0;
+        }
+
+        .highlight-text {
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        .emphasis-box {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid #d4af37;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h1>SHANG BAUHINIA<br>RESIDENCES</h1>
+                <div class="subtitle">Cebu's First Internationally Award-Winning Luxury Residence</div>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" data-section="overview">🏆 Award-Winning Excellence</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="developer">🏢 Developer Heritage</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="economy">📈 Economic Powerhouse</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="location">📍 Strategic Location</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="design">🎨 World-Class Design</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="architecture">🏗️ Architectural Vision</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="systems">⚙️ Technical Excellence</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="amenities">🌟 Luxury Amenities</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="units">🏠 Unit Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="investment">💰 Investment Timing</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="advantage">🎯 Competitive Advantage</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="contact">📞 Contact & Next Steps</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Overview Section -->
+            <section id="overview" class="content-section active">
+                <div class="section-header">
+                    <h2 class="section-title">CEBU'S FIRST INTERNATIONALLY AWARD-WINNING LUXURY RESIDENCE</h2>
+                    <p class="section-subtitle">Historic Recognition. Unprecedented Excellence. Strategic Investment Opportunity.</p>
+                    <div class="award-badge">
+                        🏆 2025 Five-Star Winner - Asia Pacific Property Awards
+                    </div>
+                </div>
+
+                <div class>
+
+<img src="https://shangbauhiniaresidences.com/wp-content/uploads/2025/05/Nominee_Presentations_SR9_1424.png" alt="Shang Bauhinia Residences exterior view" class="responsive-img" width="800">
+
+                </div>
+
+                <div class="emphasis-box">
+                    <p><strong>What you're witnessing represents a historic moment in Cebu's luxury real estate landscape.</strong> Shang Bauhinia Residences transcends conventional development—it's Cebu's pioneering residential project to achieve Five-Star recognition at the Asia Pacific Property Awards and advance to international competition in London.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3 class="card-title">International Validation</h3>
+                        <p class="card-content">The <span class="highlight-text">first and only</span> Cebu residential project to receive Five-Star recognition at the Asia Pacific Property Awards, establishing immediate market credibility and world-class standards from day one.</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">London Competition Nominee</h3>
+                        <p class="card-content">Advanced to the prestigious <span class="highlight-text">International Property Awards in London</span>, competing against global luxury developments—a testament to extraordinary design and development excellence.</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Historic Market Position</h3>
+                        <p class="card-content">This achievement positions your investment within an <span class="highlight-text">exclusive category</span> that separates award-winning excellence from standard luxury developments in the Philippine market.</p>
+                    </div>
+                </div>
+
+                <div class="luxury-divider"></div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">2025</span>
+                        <span class="stat-label">Five-Star Award Winner</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">1st</span>
+                        <span class="stat-label">Cebu Residential Project</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">London</span>
+                        <span class="stat-label">International Recognition</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">World-Class</span>
+                        <span class="stat-label">Validation Standards</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Developer Heritage Section -->
+            <section id="developer" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">18 YEARS. 5 PROJECTS. ZERO FAILURES. 129-322% APPRECIATION.</h2>
+                    <p class="section-subtitle">Proven Excellence. Mathematical Certainty. Investment Confidence Foundation.</p>
+                </div>
+
+                <div class=>
+
+<img src="images/2. SPI Property Appreciation.png" alt="2. SPI Property Appreciation" width="800">
+                
+                </div>
+
+                <div class="emphasis-box">
+                    <p><strong>Behind every landmark investment stands a developer with mathematically proven performance.</strong> Shang Properties delivers 18 consecutive years of positive returns across all projects—from 129% to 322% total appreciation. When you examine The Rise Makati delivering 23% annual returns or St. Francis Shangri-La Place achieving 322% growth, you're witnessing your investment confidence foundation.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3 class="card-title">St. Francis Shangri-La Place</h3>
+                        <p class="card-content"><span class="highlight-text">322% Total Growth</span><br>18% Annual Appreciation<br>Manila's premier luxury address with sustained performance excellence</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">The Rise Makati</h3>
+                        <p class="card-content"><span class="highlight-text">232% Total Growth</span><br>23% Annual Appreciation<br>Makati's strategic positioning with exceptional market performance</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">One Shangri-La Place</h3>
+                        <p class="card-content"><span class="highlight-text">200% Total Growth</span><br>14% Annual Appreciation<br>Consistent performance within Manila's competitive luxury market</p>
+                    </div>
+                </div>
+
+                <div class="luxury-divider"></div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">18</span>
+                        <span class="stat-label">Years Perfect Track Record</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Success Rate</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">322%</span>
+                        <span class="stat-label">Maximum Appreciation</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Zero</span>
+                        <span class="stat-label">Project Failures</span>
+                    </div>
+                </div>
+
+                <div class="emphasis-box">
+                    <p><strong>This isn't their experimental project in Cebu—it's their first masterpiece.</strong> Every development milestone, every appreciation percentage, every successful completion builds the foundation for your investment confidence in this historic Cebu venture.</p>
+                </div>
+            </section>
+
+            <!-- Economic Powerhouse Section -->
+            <section id="economy" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">CENTRAL VISAYAS: PHILIPPINES' FASTEST-GROWING TRILLION-PESO ECONOMY</h2>
+                    <p class="section-subtitle">Economic Momentum. Strategic Positioning. Investment Timing Convergence.</p>
+                </div>
+
+                <div class=>
+
+<img src="images/3, Cebu business district with economic growth.jpg" alt="3, Cebu business district with economic growth" width="800">
+  
+                </div>
+
+                <div class="emphasis-box">
+                    <p><strong>You're not merely investing in property—you're strategically positioning within the Philippines' fastest-growing regional economy.</strong> Central Visayas achieved 7.3% growth with a ₱1.01 trillion economy, powered by 396,000 IT-BPM professionals. With ₱58.9 billion in PEZA-approved projects and 38.4% tourism growth projected, your investment timing aligns with unprecedented economic momentum.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3 class="card-title">Economic Scale & Growth</h3>
+                        <p class="card-content">₱1.01 trillion regional economy with <span class="highlight-text">7.3% growth rate</span>—the Philippines' fastest-growing region, creating sustained demand for luxury residential properties.</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">IT-BPM Powerhouse</h3>
+                        <p class="card-content"><span class="highlight-text">396,000 IT-BPM professionals</span> across the metro area, representing high-income demand drivers for premium residential developments.</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Investment Pipeline</h3>
+                        <p class="card-content">₱58.9 billion in <span class="highlight-text">PEZA-approved projects</span> ensuring continued economic expansion and professional population growth.</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Tourism Growth Trajectory</h3>
+                        <p class="card-content"><span class="highlight-text">38.4% tourism growth</span> projected, creating additional demand for luxury accommodations and premium residential options.</p>
+                    </div>
+                </div>
+
+                <div class="luxury-divider"></div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">₱1.01T</span>
+                        <span class="stat-label">Regional Economy (2023)</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">7.3%</span>
+                        <span class="stat-label">Growth Rate (Fastest PH)</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">396K</span>
+                        <span class="stat-label">IT-BPM Professionals</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">₱58.9B</span>
+                        <span class="stat-label">PEZA Investment Pipeline</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Strategic Location Section -->
+            <section id="location" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">STRATEGIC POSITIONING: 0.3KM FROM IT PARK, 0.2KM FROM CEBU COUNTRY CLUB</h2>
+                    <p class="section-subtitle">Irreplaceable Location. Premium Proximity. Lifestyle Convergence.</p>
+                </div>
+
+                <div class=>
+                    <img src="images/SBR LOCATION.png" alt="2. SPI Property Appreciation" width="800">
+                </div>
+
+                <div class="emphasis-box">
+                    <p><strong>Location creates lasting value, and this location is irreplaceable.</strong> Imagine walking to work at IT Park in 3 minutes, enjoying golf course views from Cebu Country Club next door, yet living in Cebu's most exclusive address. This strategic positioning between the business district and premium lifestyle amenities ensures consistent demand and appreciation potential.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3 class="card-title">Cebu IT Park Proximity</h3>
+                        <p class="card-content"><span class="highlight-text">0.3km walking distance</span><br>3-minute walk to Cebu's premier business district<br>Direct access to 150,000+ professionals</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Cebu Country Club Views</h3>
+                        <p class="card-content"><span class="highlight-text">0.2km proximity</span><br>Golf course views and premium lifestyle amenities<br>Exclusive neighborhood character</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Ayala Center Access</h3>
+                        <p class="card-content"><span class="highlight-text">1.7km distance</span><br>Cebu's premier shopping and dining destination<br>Complete lifestyle convenience</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Business Park Connection</h3>
+                        <p class="card-content"><span class="highlight-text">1.9km to CBD</span><br>Easy access to Cebu's financial district<br>Strategic business positioning</p>
+                    </div>
+                </div>
+
+                <div class="luxury-divider"></div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">3 Min</span>
+                        <span class="stat-label">Walk to IT Park</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Golf Views</span>
+                        <span class="stat-label">Country Club Proximity</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Complete</span>
+                        <span class="stat-label">Lifestyle Access</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Irreplaceable</span>
+                        <span class="stat-label">Strategic Position</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- World-Class Design Section -->
+            <section id="design" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">SIX LANDMARK CREATORS. ONE CEBU MASTERPIECE.</h2>
+                    <p class="section-subtitle">International Expertise. Landmark Portfolios. Unprecedented Collaboration.</p>
+                </div>
+
+                <div class=>
+                    <img src="images/World-class design firms.png" alt="World-class design firms" width="800">
+                </div>
+
+                <div class="emphasis-box">
+                    <p><strong>What makes this extraordinary isn't just six world-class design firms—it's that each brings landmark project portfolios.</strong> Your architecture comes from P&T Group, creators of Hong Kong's first skyscraper. Your interiors match superyacht luxury standards by FM Architettura, designing for billionaire clients worldwide. This represents international landmark expertise collaborating for the first time in Cebu.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3 class="card-title">P&T Group (Hong Kong) - Concept Architect</h3>
+                        <p class="card-content"><span class="highlight-text">Jardine House, Exchange Square</span><br>Hong Kong's architectural pioneers<br>52 years of landmark creation</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">FM Architettura (Italy) - Interior Designer</h3>
+                        <p class="card-content"><span class="highlight-text">Superyacht interiors for global elite</span><br>Billionaire client portfolio<br>Uncompromising luxury standards</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">P Landscape (Thailand) - Landscape Architect</h3>
+                        <p class="card-content"><span class="highlight-text">Raffles Sentosa ultra-luxury resort</span><br>Award-winning tropical environments<br>Singapore's resort standard setter</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Casas + Architects - Local Architect</h3>
+                        <p class="card-content"><span class="highlight-text">Pacific Plaza Towers BGC</span><br>Philippine luxury market expertise<br>Local excellence with international standards</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">SY2 + Associates - Structural Engineering</h3>
+                        <p class="card-content"><span class="highlight-text">Performance-Based Design pioneers</span><br>Advanced structural systems<br>Engineering excellence foundation</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">NV5 Global - Building Systems</h3>
+                        <p class="card-content"><span class="highlight-text">Smart building technology leaders</span><br>Institutional-grade systems<br>Future-ready infrastructure</p>
+                    </div>
+                </div>
+
+                <div class="luxury-divider"></div>
+
+                <div class="emphasis-box">
+                    <p><strong>This design consortium represents the first time these landmark creators collaborate on a single project.</strong> Each firm brings proven excellence from their most prestigious portfolios, creating unprecedented design synergy for Cebu's luxury market.</p>
+                </div>
+            </section>
+
+            <!-- Architectural Vision Section -->
+            <section id="architecture" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">52 LEVELS OF LUXURY. FOUR DISTINCT ZONES. ULTIMATE EXCLUSIVITY.</h2>
+                    <p class="section-subtitle">Strategic Zoning. Luxury Stratification. Architectural Excellence.</p>
+                </div>
+
+                <div class=>
+<img src="images/SBR 52 LEVELS OF LUXURY.jpg" alt="SBR 52 LEVELS OF LUXURY" width="800">
+                 
+                </div>
+
+                <div class="emphasis-box">
+                    <p><strong>This isn't merely a tall building—it's strategically designed for luxury stratification.</strong> From Garden Units with private outdoor access to the exclusive Signature Collection on levels 42-51, every zone serves distinct lifestyle preferences. The Penthouse levels at 52-53 crown the development with unparalleled exclusivity.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3 class="card-title">Penthouse Zone (Levels 52-53)</h3>
+                        <p class="card-content"><span class="highlight-text">Ultimate luxury positioning</span><br>Roof garden sanctuary access<br>Unparalleled exclusivity and privacy<br>Panoramic city and ocean views</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Signature Collection (Levels 42-51)</h3>
+                        <p class="card-content"><span class="highlight-text">Ultra-high-net-worth positioning</span><br>Exclusive Sky Lounge access<br>Premium floor-to-ceiling heights<br>Private elevator access available</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">High Zone Residential (Levels 32-41)</h3>
+                        <p class="card-content"><span class="highlight-text">Premium city views and exclusivity</span><br>Optimal height for luxury living<br>Comprehensive amenity access<br>Strategic positioning benefits</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Low Zone Foundation (Levels 8-31)</h3>
+                        <p class="card-content"><span class="highlight-text">Luxury accessibility with volume optimization</span><br>Premium amenities access<br>Strategic investment entry point<br>Professional and family-friendly positioning</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Garden Integration (Level 7)</h3>
+                        <p class="card-content"><span class="highlight-text">Ground-connected luxury with private access</span><br>Exclusive garden unit positioning<br>Private outdoor space integration<br>Ultra-rare availability</p>
+                    </div>
+                </div>
+
+                <div class="luxury-divider"></div>
+
+                <div class="emphasis-box">
+                    <p><strong>The dual-tier amenity system ensures both comprehensive facilities and private experiences.</strong> Every level serves distinct market segments while maintaining the architectural integrity and luxury standards throughout the entire development.</p>
+                </div>
+            </section>
+
+            <!-- Technical Excellence Section -->
+            <section id="systems" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">INSTITUTIONAL-GRADE INFRASTRUCTURE. RESIDENTIAL LUXURY STANDARDS.</h2>
+                    <p class="section-subtitle">Engineering Excellence. Class A Systems. Investment Protection.</p>
+                </div>
+
+                <div class=>
+             <img src="Images/Technical diagrams.png" alt="Technical diagrams" width="800">
+                </div>
+
+                <div class="emphasis-box">
+                    <p><strong>Behind the luxury façade lies institutional-grade engineering that most residential developments don't provide.</strong> We maintain 100% emergency power backup for both units and common areas, 2-day water storage capacity across three levels, and a 289-cubic-meter stormwater system designed for 100-year rainfall scenarios. This represents Class A office tower infrastructure integrated into residential luxury.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3 class="card-title">Power Infrastructure Excellence</h3>
+                        <p class="card-content"><span class="highlight-text">100% emergency backup power</span><br>Units and common areas fully covered<br>Uninterrupted luxury living experience<br>Class A office tower standards</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Advanced Water Management</h3>
+                        <p class="card-content"><span class="highlight-text">2-day supply capacity</span><br>Three-level distribution system<br>Redundant storage and pumping<br>Continuous service assurance</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Comprehensive Safety Systems</h3>
+                        <p class="card-content"><span class="highlight-text">Advanced fire protection</span><br>Complete sprinkler coverage<br>Emergency communication systems<br>Life safety code compliance excellence</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Smart Transportation Systems</h3>
+                        <p class="card-content"><span class="highlight-text">Strategic elevator zoning</span><br>34-76 second travel times<br>Redundant vertical transportation<br>Peak efficiency optimization</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Environmental Engineering</h3>
+                        <p class="card-content"><span class="highlight-text">289-cubic-meter stormwater system</span><br>100-year rainfall design capacity<br>Advanced HVAC and ventilation<br>Smart building integration</p>
+                    </div>
+                </div>
+
+                <div class="luxury-divider"></div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Emergency Power Backup</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">2 Days</span>
+                        <span class="stat-label">Water Storage Capacity</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">289m³</span>
+                        <span class="stat-label">Stormwater System</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Class A</span>
+                        <span class="stat-label">Infrastructure Standards</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Luxury Amenities Section -->
+            <section id="amenities" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">HOTEL-GRADE AMENITIES. EXCLUSIVE SKY-LEVEL EXPERIENCES.</h2>
+                    <p class="section-subtitle">Dual-Tier Luxury. Comprehensive Facilities. Exclusive Access.</p>
+                </div>
+
+                <div class=>
+                   <img src="images/L7 Al Fresco (3).jpg" alt="Al Fresco" width="800">
+                </div>
+
+                <div class="emphasis-box">
+                    <p><strong>We've created two distinct amenity experiences that serve both community and exclusivity.</strong> The 4,015-sqm Clubhouse provides comprehensive facilities for all residents, while Signature residents enjoy exclusive access to the 1,105-sqm Sky Lounge with rooftop infinity pool and private event venues.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3 class="card-title">The Clubhouse (4,015 sqm)</h3>
+                        <p class="card-content"><span class="highlight-text">Available to all residents</span><br>• Professional gym and yoga/Pilates studio<br>• Tropical pool with luxury cabanas<br>• Multi-purpose sports court<br>• Private cinema and entertainment rooms<br>• Library and quiet study areas<br>• The Bauhinia Ballroom for events</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Sky Lounge (1,105 sqm)</h3>
+                        <p class="card-content"><span class="highlight-text">Exclusive to Signature residents</span><br>• Rooftop infinity pool with panoramic views<br>• Luxury cabanas and outdoor lounging<br>• Private gym and massage facilities<br>• Exclusive event and meeting venues<br>• Private dining and entertainment areas<br>• Ultra-premium service standards</p>
+                    </div>
+                </div>
+
+                <div class="luxury-divider"></div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">5,120</span>
+                        <span class="stat-label">Total Amenity Space (sqm)</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Dual-Tier</span>
+                        <span class="stat-label">Amenity Architecture</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Hotel-Grade</span>
+                        <span class="stat-label">Service Standards</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Sky-Level</span>
+                        <span class="stat-label">Exclusive Access</span>
+                    </div>
+                </div>
+
+                <div class="emphasis-box">
+                    <p><strong>This dual-tier approach ensures both comprehensive community facilities and ultra-exclusive experiences.</strong> Whether you're seeking daily wellness routines or hosting prestigious events, the amenity architecture serves every luxury lifestyle requirement.</p>
+                </div>
+            </section>
+
+            <!-- Unit Portfolio Section -->
+            <section id="units" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">1,069 UNITS. 7 CATEGORIES. ₱10.25M TO ₱82M INVESTMENT RANGE.</h2>
+                    <p class="section-subtitle">Strategic Market Segmentation. Premium Positioning. Investment Precision.</p>
+                </div>
+
+                <div class=>
+                   <img src="images/Typical Units.png" alt="Typical Units" width="800">
+                </div>
+
+                <div class="emphasis-box">
+                    <p><strong>Our unit portfolio serves every luxury market segment with strategic precision.</strong> Studio units start at ₱10.25M for tech professionals and investors, while our 3-bedroom Signature collection reaches ₱82M for ultra-high-net-worth buyers. The Garden Units and Penthouses represent ultra-exclusive opportunities with pricing reflecting their rarity and premium positioning.</p>
+                </div>
+
+                <table class="unit-table">
+                    <thead>
+                        <tr>
+                            <th>Unit Type</th>
+                            <th>Count</th>
+                            <th>Size Range</th>
+                            <th>Price Range</th>
+                            <th>Price per sqm</th>
+                            <th>Target Market</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Studio</strong></td>
+                            <td>392 units</td>
+                            <td>35.33 sqm</td>
+                            <td>₱10.25M - ₱14.99M</td>
+                            <td>₱290K - ₱424K</td>
+                            <td>Tech professionals, investors</td>
+                        </tr>
+                        <tr>
+                            <td><strong>1 Bedroom</strong></td>
+                            <td>458 units</td>
+                            <td>50.45 - 64.12 sqm</td>
+                            <td>₱18.24M - ₱25.12M</td>
+                            <td>₱362K - ₱392K</td>
+                            <td>Young professionals, couples</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2BR Typical</strong></td>
+                            <td>132 units</td>
+                            <td>95.02 - 103.51 sqm</td>
+                            <td>₱32.41M - ₱43.00M</td>
+                            <td>₱341K - ₱415K</td>
+                            <td>Families, executives</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2BR Signature</strong></td>
+                            <td>27 units</td>
+                            <td>109.91 - 124 sqm</td>
+                            <td>₱45.51M - ₱53.31M</td>
+                            <td>₱414K - ₱430K</td>
+                            <td>High-net-worth professionals</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3BR Signature</strong></td>
+                            <td>54 units</td>
+                            <td>187.81 - 220.52 sqm</td>
+                            <td>₱74.84M - ₱82.03M</td>
+                            <td>₱399K - ₱372K</td>
+                            <td>Ultra-high-net-worth</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Garden Units</strong></td>
+                            <td>4 units</td>
+                            <td>TBA</td>
+                            <td>Premium Pricing</td>
+                            <td>Ultra-Premium</td>
+                            <td>Ultra-exclusive segment</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Penthouses</strong></td>
+                            <td>2 units</td>
+                            <td>TBA</td>
+                            <td>Ultra-Premium Pricing</td>
+                            <td>Luxury Collector</td>
+                            <td>Luxury collectors</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="luxury-divider"></div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">1,069</span>
+                        <span class="stat-label">Total Units Available</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Distinct Categories</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">₱10.25M</span>
+                        <span class="stat-label">Entry Investment</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">₱82M</span>
+                        <span class="stat-label">Ultra-Luxury Range</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Investment Timing Section -->
+            <section id="investment" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">PERFECT STORM: ECONOMIC GROWTH + AWARD RECOGNITION + PROVEN DEVELOPER</h2>
+                    <p class="section-subtitle">Market Convergence. Strategic Timing. Investment Confidence.</p>
+                </div>
+
+                <div class="image-placeholder">
+                    [Image: Market timing convergence diagram with investment confidence indicators and growth projections]
+                </div>
+
+                <div class="emphasis-box">
+                    <p><strong>Exceptional investment opportunities occur when multiple factors align perfectly.</strong> You have Central Visayas' record economic growth, international award recognition validating quality standards, a developer with 18 years of perfect performance, and Cebu's first hospitality-grade luxury residence. This convergence creates investment timing that rarely repeats in any market.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3 class="card-title">Economic Momentum</h3>
+                        <p class="card-content"><span class="highlight-text">7.3% regional growth</span> with ₱1.01 trillion economy<br>396,000 IT-BPM professionals<br>₱58.9B PEZA investment pipeline<br>Sustained demand foundation</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Market Validation</h3>
+                        <p class="card-content"><span class="highlight-text">Five-Star award recognition</span><br>London international competition<br>World-class quality validation<br>Immediate market credibility</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Developer Reliability</h3>
+                        <p class="card-content"><span class="highlight-text">18-year perfect track record</span><br>129-322% appreciation history<br>Zero project failures<br>Mathematical investment confidence</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Historic Significance</h3>
+                        <p class="card-content"><span class="highlight-text">First Shang Properties residential in Cebu</span><br>Award-winning international recognition<br>Six world-class design firms<br>Landmark market positioning</p>
+                    </div>
+                </div>
+
+                <div class="luxury-divider"></div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">Perfect</span>
+                        <span class="stat-label">Market Timing</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Multiple</span>
+                        <span class="stat-label">Growth Drivers</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Proven</span>
+                        <span class="stat-label">Performance Foundation</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Historic</span>
+                        <span class="stat-label">Market Opportunity</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Competitive Advantage Section -->
+            <section id="advantage" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">EXCLUSIVE MARKET POSITION. UNMATCHED DIFFERENTIATION.</h2>
+                    <p class="section-subtitle">Strategic Leadership. Competitive Superiority. Market Exclusivity.</p>
+                </div>
+
+                <div class="image-placeholder">
+                    [Image: Comparison matrix showing Shang Bauhinia vs market competition with unique selling propositions]
+                </div>
+
+                <div class="emphasis-box">
+                    <p><strong>This represents exclusive market positioning that transcends typical competition.</strong> While other developments offer standard luxury, we deliver award-winning international recognition. Where others use single design firms, we collaborate with six world-class specialists. When others provide basic building systems, we install institutional-grade infrastructure. This isn't competition—it's market leadership.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3 class="card-title">Award Recognition Exclusivity</h3>
+                        <p class="card-content"><span class="highlight-text">Only Five-Star winner advancing to London</span><br>International validation vs local standards<br>World-class recognition vs market positioning<br>Historic achievement vs typical development</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Design Consortium Superiority</h3>
+                        <p class="card-content"><span class="highlight-text">Six world-class firms vs single firm</span><br>International landmark expertise<br>Collaborative excellence vs standard practice<br>Unprecedented design synergy</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Technical Infrastructure Leadership</h3>
+                        <p class="card-content"><span class="highlight-text">Institutional-grade vs standard systems</span><br>Class A office tower infrastructure<br>100% emergency power vs basic backup<br>Engineering excellence vs minimum compliance</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Developer Performance Excellence</h3>
+                        <p class="card-content"><span class="highlight-text">18-year perfect track record</span><br>129-322% appreciation vs mixed performance<br>Zero failures vs market uncertainty<br>Proven reliability vs development risk</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">Management Standards Supremacy</h3>
+                        <p class="card-content"><span class="highlight-text">Hotel-grade service vs standard management</span><br>Dual-tier amenity architecture<br>Luxury hospitality standards<br>Premium service excellence</p>
+                    </div>
+                </div>
+
+                <div class="luxury-divider"></div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">Exclusive</span>
+                        <span class="stat-label">Market Position</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Unmatched</span>
+                        <span class="stat-label">Differentiation</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Strategic</span>
+                        <span class="stat-label">Leadership</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Premium</span>
+                        <span class="stat-label">Market Command</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact & Next Steps Section -->
+            <section id="contact" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">YOUR STRATEGIC POSITIONING IN CEBU'S LANDMARK FUTURE</h2>
+                    <p class="section-subtitle">Investment Consultation. Strategic Guidance. Exclusive Opportunity Access.</p>
+                </div>
+
+                <div class="contact-card">
+                    <h3 class="contact-title">Ronnel Estrada - Property Specialist</h3>
+                    <div class="contact-info">📱 Direct Line: 0956 651 0333 (Direct/Viber/WhatsApp)</div>
+                    <div class="contact-info">📧 Email: ronnel.estrada@shangproperties.com</div>
+                    <div class="contact-info">🌐 Project Website: shangbauhiniaresidences.com</div>
+                </div>
+
+                <div class="emphasis-box">
+                    <p><strong>What you've experienced today transcends typical property presentation—it's your strategic positioning within Cebu's landmark future.</strong> This represents the convergence of international award recognition, proven developer performance, world-class design excellence, and institutional-grade infrastructure that has never been available in Cebu before.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3 class="card-title">1. Unit Availability Confirmation</h3>
+                        <p class="card-content">• Real-time inventory verification<br>• Floor plan selection consultation<br>• Optimal unit positioning analysis<br>• Investment timing assessment</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">2. Investment Structure Consultation</h3>
+                        <p class="card-content">• Flexible payment terms discussion<br>• Investment optimization strategies<br>• Portfolio integration planning<br>• Financial structuring options</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">3. Site Visit Scheduling</h3>
+                        <p class="card-content">• Development progress verification<br>• Construction quality assessment<br>• Location advantage confirmation<br>• Premium positioning validation</p>
+                    </div>
+                    <div class="content-card">
+                        <h3 class="card-title">4. Documentation & Reservation</h3>
+                        <p class="card-content">• Complete documentation preparation<br>• Reservation process initiation<br>• Legal compliance assurance<br>• Investment protection protocols</p>
+                    </div>
+                </div>
+
+                <div class="luxury-divider"></div>
+
+                <div class="emphasis-box">
+                    <p><strong>Strategic Commitment:</strong> Transform from property transaction to strategic investment consultation through verified market intelligence, award-winning credentials, and institutional-grade technical excellence—positioning you as a strategic investor in Cebu's landmark future.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">Strategic</span>
+                        <span class="stat-label">Investment Consultation</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Exclusive</span>
+                        <span class="stat-label">Opportunity Access</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Professional</span>
+                        <span class="stat-label">Guidance & Support</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Landmark</span>
+                        <span class="stat-label">Future Positioning</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.content-section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links and sections
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    sections.forEach(section => section.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    const targetSection = this.getAttribute('data-section');
+                    document.getElementById(targetSection).classList.add('active');
+                    
+                    // Scroll to top of main content
+                    document.querySelector('.main-content').scrollTop = 0;
+                });
+            });
+
+            // Add smooth scrolling animation
+            document.querySelector('.main-content').style.scrollBehavior = 'smooth';
+        });
+
+        // Add interactive hover effects for cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.content-card, .stat-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                    this.style.transition = 'all 0.3s ease';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+
+        // Add loading animation for sections
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.content-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
